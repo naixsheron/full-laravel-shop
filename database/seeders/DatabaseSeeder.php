@@ -3,8 +3,10 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\User;
 use Database\Seeders\AdminProfileSeeder;
 use Database\Seeders\UserSeeder;
+use Database\Seeders\VendorShopProfileSeeder;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -21,7 +23,8 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        // $this->call(UserSeeder::class);
+        $this->call(UserSeeder::class);
         $this->call(AdminProfileSeeder::class);
+        $this->call(VendorShopProfileSeeder::class);
     }
 }
