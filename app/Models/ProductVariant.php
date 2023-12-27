@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Product;
 use App\Models\ProductVariantItem;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -12,5 +13,9 @@ class ProductVariant extends Model
     public function productVariantItems()
     {
         return $this->hasMany(ProductVariantItem::class);
+    }
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
     }
 }

@@ -9456,3 +9456,7 @@ a:not([href]):not([class]):hover {
     margin-left: 5px !important;
 }
 /* extra css end here */
+.btn-space-right {
+    margin-right: 5px;
+    color: white;
+}
