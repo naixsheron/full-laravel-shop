@@ -2,7 +2,8 @@
 
 namespace App\DataTables;
 
-use App\Models\ProductVariant;
+use App\Models\Coupon;
+use App\Models\GeneralSetting;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
@@ -12,7 +13,7 @@ use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class ProductVariantDataTable extends DataTable
+class CouponDataTable extends DataTable
 {
     /**
      * Build the DataTable class.
@@ -23,10 +24,13 @@ class ProductVariantDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
             ->addColumn('action', function ($query) {
-                $variantItems = "<a href='" . route('admin.products-variant-item.index', ['productId' => request()->product, 'variantId' => $query->id]) . "' class='btn btn-info mr-2'><i class='far fa-edit'></i>Variant Items</a>";
-                $editBtn = "<a href='" . route('admin.products-variant.edit', $query->id) . "' class='btn btn-primary'><i class='far fa-edit'></i></a>";
-                $deleteBtn = "<a href='" . route('admin.products-variant.destroy', $query->id) . "' class='btn btn-danger ml-2 delete-item'><i class='far fa-trash-alt'></i></a>";
-                return $variantItems . $editBtn . $deleteBtn;
+                $editBtn = "<a href='" . route('admin.coupons.edit', $query->id) . "' class='btn btn-primary'><i class='far fa-edit'></i></a>";
+                $deleteBtn = "<a href='" . route('admin.coupons.destroy', $query->id) . "' class='btn btn-danger ml-2 delete-item'><i class='far fa-trash-alt'></i></a>";
+
+                return $editBtn . $deleteBtn;
+            })
+            ->addColumn('discount', function ($query) {
+                return GeneralSetting::first()->currency_icon . $query->discount;
             })
             ->addColumn('status', function ($query) {
                 if ($query->status == 1) {
@@ -52,9 +56,9 @@ class ProductVariantDataTable extends DataTable
     /**
      * Get the query source of dataTable.
      */
-    public function query(ProductVariant $model): QueryBuilder
+    public function query(Coupon $model): QueryBuilder
     {
-        return $model->where('product_id', request()->product)->newQuery();
+        return $model->newQuery();
     }
 
     /**
@@ -63,7 +67,7 @@ class ProductVariantDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-            ->setTableId('productvariant-table')
+            ->setTableId('coupon-table')
             ->columns($this->getColumns())
             ->minifiedAjax()
             //->dom('Bfrtip')
@@ -86,13 +90,17 @@ class ProductVariantDataTable extends DataTable
     {
         return [
 
-            Column::make('id')->width(80),
+            Column::make('id'),
             Column::make('name'),
+            Column::make('discount_type'),
+            Column::make('discount'),
+            Column::make('start_date'),
+            Column::make('end_date'),
             Column::make('status'),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)
-                ->width(400)
+                ->width(200)
                 ->addClass('text-center'),
         ];
     }
@@ -102,6 +110,6 @@ class ProductVariantDataTable extends DataTable
      */
     protected function filename(): string
     {
-        return 'ProductVariant_' . date('YmdHis');
+        return 'Coupon_' . date('YmdHis');
     }
 }

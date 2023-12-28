@@ -6,7 +6,8 @@
                     <div class="wsus__flash_coundown">
                         <span class=" end_text">flash sell</span>
                         <div class="simply-countdown simply-countdown-one"></div>
-                        <a class="common_btn" href="#">see more <i class="fas fa-caret-right"></i></a>
+                        <a class="common_btn" href="{{ route('flash-sale') }}">see more <i
+                                class="fas fa-caret-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -25,7 +26,7 @@
                                 class="wsus__minus">{{ calculateDiscountPercent($product->price, $product->offer_price) }}%</span>
                         @endif
 
-                        <a class="wsus__pro_link" href="product_details.html">
+                        <a class="wsus__pro_link" href="{{ route('product-detail', $product->slug) }}">
                             <img src="{{ asset($product->thumb_image) }}" alt="product"
                                 class="img-fluid w-100 img_1" />
                             <img src="
@@ -51,12 +52,14 @@
                                 <i class="fas fa-star-half-alt"></i>
                                 <span>(133 review)</span>
                             </p>
-                            <a class="wsus__pro_name" href="#">{{ $product->name }}</a>
+                            <a class="wsus__pro_name"
+                                href="{{ route('product-detail', $product->slug) }}">{{ $product->name }}</a>
                             @if (checkDiscount($product))
-                                <p class="wsus__price">${{ $product->offer_price }} <del>${{ $product->price }}</del>
+                                <p class="wsus__price">{{ $settings->currency_icon }} {{ $product->offer_price }}
+                                    <del>{{ $settings->currency_icon }} {{ $product->price }}</del>
                                 </p>
                             @else
-                                <p class="wsus__price">${{ $product->price }}</p>
+                                <p class="wsus__price">{{ $settings->currency_icon }} {{ $product->price }}</p>
                             @endif
 
                             <a class="add_cart" href="#">add to cart</a>
@@ -79,7 +82,7 @@
                 year: {{ date('Y', strtotime($flashSaleDate->end_date)) }},
                 month: {{ date('m', strtotime($flashSaleDate->end_date)) }},
                 day: {{ date('d', strtotime($flashSaleDate->end_date)) }},
-                enableUtc: true
+
             });
         })
     </script>

@@ -2,8 +2,11 @@
 
 namespace App\Models;
 
-use App\Models\Category;
+use App\Models\Brand;
 
+use App\Models\Category;
+use App\Models\ProductImageGallery;
+use App\Models\ProductVariant;
 use App\Models\Vendor;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -23,5 +26,13 @@ class Product extends Model
     public function productImageGalleries()
     {
         return $this->hasMany(ProductImageGallery::class);
+    }
+    public function variants()
+    {
+        return $this->hasMany(ProductVariant::class);
+    }
+    public function brand()
+    {
+        return $this->belongsTo(Brand::class);
     }
 }
