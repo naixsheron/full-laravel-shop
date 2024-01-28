@@ -1,9 +1,12 @@
 @extends('frontend.layouts.master')
+@section('title')
+    {{ $settings->site_name }} || Flash sale
+@endsection
 
 @section('content')
     <!--============================
-                                                                                    BREADCRUMB START
-                                                                                ==============================-->
+                                                                                        BREADCRUMB START
+                                                                                    ==============================-->
     <section id="wsus__breadcrumb">
         <div class="wsus_breadcrumb_overlay">
             <div class="container">
@@ -20,13 +23,13 @@
         </div>
     </section>
     <!--============================
-                                                                                    BREADCRUMB END
-                                                                                ==============================-->
+                                                                                        BREADCRUMB END
+                                                                                    ==============================-->
 
 
     <!--============================
-                                                                                    DAILY DEALS DETAILS START
-                                                                                ==============================-->
+                                                                                        DAILY DEALS DETAILS START
+                                                                                    ==============================-->
     <section id="wsus__daily_deals">
         <div class="container">
             <div class="wsus__offer_details_area">
@@ -134,8 +137,8 @@
         </div>
     </section>
     <!--============================
-                                                                                    DAILY DEALS DETAILS END
-                                                                                ==============================-->
+                                                                                        DAILY DEALS DETAILS END
+                                                                                    ==============================-->
 @endsection
 
 @push('scripts')

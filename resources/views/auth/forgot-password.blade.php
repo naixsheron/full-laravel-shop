@@ -1,11 +1,12 @@
 @extends('frontend.layouts.master')
+@section('title')
+    {{ $settings->site_name }} || Forgot Password
+@endsection
 
 @section('content')
-
-
     <!--============================
-        BREADCRUMB START
-    ==============================-->
+            BREADCRUMB START
+        ==============================-->
     <section id="wsus__breadcrumb">
         <div class="wsus_breadcrumb_overlay">
             <div class="container">
@@ -22,13 +23,13 @@
         </div>
     </section>
     <!--============================
-        BREADCRUMB END
-    ==============================-->
+            BREADCRUMB END
+        ==============================-->
 
 
     <!--============================
-        FORGET PASSWORD START
-    ==============================-->
+            FORGET PASSWORD START
+        ==============================-->
     <section id="wsus__login_register">
         <div class="container">
             <div class="row">
@@ -42,9 +43,10 @@
                                 @csrf
                                 <div class="wsus__login_input">
                                     <i class="fal fa-envelope"></i>
-                                    <input id="email"  type="email" name="email" value="{{ old('email') }}" placeholder="Your Email">
+                                    <input id="email" type="email" name="email" value="{{ old('email') }}"
+                                        placeholder="Your Email">
                                 </div>
-              
+
                                 <button class="common_btn" type="submit">send</button>
                             </form>
                         </div>
@@ -55,7 +57,6 @@
         </div>
     </section>
     <!--============================
-        FORGET PASSWORD END
-    ==============================-->
-
+            FORGET PASSWORD END
+        ==============================-->
 @endsection

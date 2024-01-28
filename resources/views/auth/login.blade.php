@@ -1,10 +1,12 @@
 @extends('frontend.layouts.master')
+@section('title')
+    {{ $settings->site_name }} || Login
+@endsection
 
 @section('content')
-
     <!--============================
-         BREADCRUMB START
-    ==============================-->
+                 BREADCRUMB START
+            ==============================-->
     <section id="wsus__breadcrumb">
         <div class="wsus_breadcrumb_overlay">
             <div class="container">
@@ -21,13 +23,13 @@
         </div>
     </section>
     <!--============================
-        BREADCRUMB END
-    ==============================-->
+                BREADCRUMB END
+            ==============================-->
 
 
     <!--============================
-       LOGIN/REGISTER PAGE START
-    ==============================-->
+               LOGIN/REGISTER PAGE START
+            ==============================-->
     <section id="wsus__login_register">
         <div class="container">
             <div class="row">
@@ -53,18 +55,19 @@
                                         @csrf
                                         <div class="wsus__login_input">
                                             <i class="fas fa-user-tie"></i>
-                                            <input id="email" type="email" value="{{ old('email') }}" name="email" placeholder="Email">
+                                            <input id="email" type="email" value="{{ old('email') }}" name="email"
+                                                placeholder="Email">
                                         </div>
-     
+
                                         <div class="wsus__login_input">
                                             <i class="fas fa-key"></i>
-                                            <input id="password"  type="password" name="password" placeholder="Password">
+                                            <input id="password" type="password" name="password" placeholder="Password">
                                         </div>
-        
+
                                         <div class="wsus__login_save">
                                             <div class="form-check form-switch">
-                                                <input id="remember_me" name="remember" class="form-check-input" type="checkbox"
-                                                    id="flexSwitchCheckDefault">
+                                                <input id="remember_me" name="remember" class="form-check-input"
+                                                    type="checkbox" id="flexSwitchCheckDefault">
                                                 <label class="form-check-label" for="flexSwitchCheckDefault">Remember
                                                     me</label>
                                             </div>
@@ -89,26 +92,29 @@
                                         @csrf
                                         <div class="wsus__login_input">
                                             <i class="fas fa-user-tie"></i>
-                                            <input id="name" name="name" value="{{ old('name') }}"  type="text" placeholder="Name">
-                                        </div>
-       
-                                        <div class="wsus__login_input">
-                                            <i class="far fa-envelope"></i>
-                                            <input id="email"  type="email" name="email" value="{{ old('email') }}" placeholder="Email">
-                                        </div>
-       
-                                        <div class="wsus__login_input">
-                                            <i class="fas fa-key"></i>
-                                            <input id="password"  type="password"  name="password" placeholder="Password">
-                                        </div>
-                           
-                                        <div class="wsus__login_input">
-                                            <i class="fas fa-key"></i>
-                                            <input id="password_confirmation"  type="password" name="password_confirmation" placeholder="Confirm Password">
+                                            <input id="name" name="name" value="{{ old('name') }}" type="text"
+                                                placeholder="Name">
                                         </div>
 
-            
-                                      
+                                        <div class="wsus__login_input">
+                                            <i class="far fa-envelope"></i>
+                                            <input id="email" type="email" name="email" value="{{ old('email') }}"
+                                                placeholder="Email">
+                                        </div>
+
+                                        <div class="wsus__login_input">
+                                            <i class="fas fa-key"></i>
+                                            <input id="password" type="password" name="password" placeholder="Password">
+                                        </div>
+
+                                        <div class="wsus__login_input">
+                                            <i class="fas fa-key"></i>
+                                            <input id="password_confirmation" type="password" name="password_confirmation"
+                                                placeholder="Confirm Password">
+                                        </div>
+
+
+
                                         <button class="common_btn mt-4" type="submit">signup</button>
                                     </form>
                                 </div>
@@ -120,7 +126,6 @@
         </div>
     </section>
     <!--============================
-       LOGIN/REGISTER PAGE END
-    ==============================-->
-
+               LOGIN/REGISTER PAGE END
+            ==============================-->
 @endsection
